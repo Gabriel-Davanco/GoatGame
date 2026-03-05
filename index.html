@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuackGotchi - O Pato Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="game-container">
+        <header>
+            <div class="status-bars">
+                <div class="status-item">
+                    <label>🌽 Fome</label>
+                    <div class="bar-container">
+                        <div id="hunger-bar" class="bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <label>🎾 Diversão</label>
+                    <div class="bar-container">
+                        <div id="fun-bar" class="bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main id="world">
+            <div id="duck-wrapper">
+                <img id="duck-sprite"
+                    src="file:///C:/Users/24025899/.gemini/antigravity/brain/f04ad9df-1a7c-449b-b624-98982096ce5b/happy_duck_pixel_art_1772753044285.png"
+                    alt="Pato">
+                <div id="particles"></div>
+            </div>
+            <div id="message-container" class="hidden">
+                <div class="note">
+                    <p id="game-over-text"></p>
+                    <button id="reset-btn">Recomeçar</button>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="controls">
+                <button id="feed-btn" class="game-btn">
+                    <span class="icon">🌽</span>
+                    <span class="label">Alimentar</span>
+                </button>
+                <button id="play-btn" class="game-btn">
+                    <span class="icon">🎾</span>
+                    <span class="label">Brincar</span>
+                </button>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

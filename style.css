@@ -1,0 +1,287 @@
+:root {
+    --bg-color: #a8dadc;
+    --primary-color: #f1faee;
+    --accent-color: #457b9d;
+    --hunger-color: #2ecc71;
+    --fun-color: #3498db;
+    --critical-color: #e63946;
+    --text-color: #1d3557;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+#game-container {
+    width: 400px;
+    height: 600px;
+    background: url('file:///C:/Users/24025899/.gemini/antigravity/brain/f04ad9df-1a7c-449b-b624-98982096ce5b/duck_pond_background_v2_1772753212801.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 8px solid var(--primary-color);
+    overflow: hidden;
+}
+
+header {
+    padding: 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid var(--glass-border);
+}
+
+.status-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.status-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.status-item label {
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+.bar-container {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bar {
+    height: 100%;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+#hunger-bar {
+    background-color: var(--hunger-color);
+}
+
+#fun-bar {
+    background-color: var(--fun-color);
+}
+
+.bar.critical {
+    background-color: var(--critical-color) !important;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+#world {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#duck-wrapper {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#duck-wrapper:active {
+    transform: scale(0.9);
+}
+
+#duck-sprite {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
+    animation: idle 3s ease-in-out infinite;
+    image-rendering: pixelated;
+    /* Keeps pixel art sharp */
+}
+
+@keyframes idle {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+#duck-wrapper.jump {
+    animation: jump 0.5s ease-out;
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-50px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+footer {
+    padding: 30px 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border-top: 2px solid var(--glass-border);
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.game-btn {
+    border: none;
+    background: var(--primary-color);
+    padding: 15px 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s;
+    flex: 1;
+}
+
+.game-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    background: white;
+}
+
+.game-btn:active {
+    transform: translateY(2px);
+}
+
+.game-btn .icon {
+    font-size: 24px;
+}
+
+.game-btn .label {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--text-color);
+}
+
+#message-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.note {
+    background: #fffbe6;
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 80%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 4px solid #f39c12;
+    transform: rotate(-2deg);
+}
+
+.note p {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+#reset-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: transform 0.2s;
+}
+
+#reset-btn:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Partículas */
+.particle {
+    position: absolute;
+    pointer-events: none;
+    animation: particle-fly 0.8s ease-out forwards;
+}
+
+@keyframes particle-fly {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
