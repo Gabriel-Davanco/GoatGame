@@ -37,6 +37,39 @@
                     alt="Pato">
                 <div id="particles"></div>
             </div>
+            <!-- Mini-game: Alimentar -->
+            <div id="feed-game-overlay" class="hidden">
+                <div class="minigame-container catch-game">
+                    <canvas id="feed-game-canvas"></canvas>
+                    <div id="feed-game-ui" class="minigame-ui">
+                        <h3 class="minigame-title">Hora do Milho!</h3>
+                        <p class="minigame-info">Pegue 10 grãos de milho!</p>
+                        <div id="feed-game-score" class="minigame-score-text">0 / 10</div>
+                        <div class="minigame-buttons">
+                            <button id="restart-feed-btn" class="hidden">Tentar de novo</button>
+                            <button id="close-feed-btn" class="hidden">Ganhar Comida 🌽</button>
+                            <button id="exit-feed-btn" class="exit-btn">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mini-game: Brincar (Flappy) -->
+            <div id="minigame-overlay" class="hidden">
+                <div class="minigame-container flappy-game">
+                    <canvas id="minigame-canvas"></canvas>
+                    <div id="minigame-ui" class="minigame-ui">
+                        <h3 id="minigame-title" class="minigame-title">Flappy Duck</h3>
+                        <p id="minigame-info" class="minigame-info">Espaço ou clique para voar!</p>
+                        <div id="minigame-score" class="minigame-score-text">0 / 5</div>
+                        <div class="minigame-buttons">
+                            <button id="restart-minigame-btn" class="hidden">Tentar de novo</button>
+                            <button id="close-minigame-btn" class="hidden">Ganhar Diversão 🎾</button>
+                            <button id="exit-minigame-btn" class="exit-btn">Sair</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div id="message-container" class="hidden">
                 <div class="note">
                     <p id="game-over-text"></p>

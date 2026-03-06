@@ -42,6 +42,24 @@ body {
     overflow: hidden;
 }
 
+#game-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(4px);
+    z-index: 0;
+}
+
+header,
+#world,
+footer {
+    z-index: 1;
+}
+
 header {
     padding: 20px;
     background: var(--glass-bg);
@@ -129,12 +147,11 @@ header {
 }
 
 #duck-sprite {
-    width: 150px;
+    width: 120px;
     height: auto;
     filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.1));
     animation: idle 3s ease-in-out infinite;
-    image-rendering: pixelated;
-    /* Keeps pixel art sharp */
+    image-rendering: auto;
 }
 
 @keyframes idle {
@@ -168,7 +185,7 @@ header {
 }
 
 footer {
-    padding: 30px 20px;
+    padding: 10px 15px;
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border-top: 2px solid var(--glass-border);
@@ -176,21 +193,23 @@ footer {
 
 .controls {
     display: flex;
-    gap: 15px;
+    gap: 8px;
     justify-content: center;
 }
 
 .game-btn {
     border: none;
     background: var(--primary-color);
-    padding: 15px 25px;
-    border-radius: 20px;
+    padding: 6px 12px;
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    /* Horizontal for less height */
     align-items: center;
-    gap: 5px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.2s;
     flex: 1;
 }
@@ -206,11 +225,11 @@ footer {
 }
 
 .game-btn .icon {
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .game-btn .label {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 800;
     color: var(--text-color);
 }
@@ -265,6 +284,126 @@ footer {
 
 .hidden {
     display: none !important;
+}
+
+/* Minigame Overlay Common */
+#minigame-overlay,
+#feed-game-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    backdrop-filter: blur(10px);
+}
+
+.minigame-container {
+    width: 320px;
+    height: 480px;
+    border: 6px solid #fff;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.flappy-game {
+    background: #70c5ce;
+}
+
+.catch-game {
+    background: #34495e;
+}
+
+#minigame-canvas,
+#feed-game-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* Removing canvas gap */
+}
+
+.minigame-ui {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    pointer-events: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 15px;
+}
+
+.minigame-title {
+    font-size: 18px;
+    margin-bottom: 2px;
+    font-weight: 800;
+}
+
+.minigame-score-text {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.minigame-info {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 10px;
+}
+
+.minigame-ui button {
+    pointer-events: auto;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 12px;
+    background: #f1c40f;
+    color: #000;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.minigame-ui button:hover {
+    transform: translateY(-2px);
+}
+
+.minigame-buttons {
+    margin-top: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+.exit-btn {
+    background: #e74c3c !important;
+    color: white !important;
+}
+
+#close-minigame-btn,
+#close-feed-btn {
+    background: #2ecc71 !important;
+    color: white !important;
 }
 
 /* Partículas */
